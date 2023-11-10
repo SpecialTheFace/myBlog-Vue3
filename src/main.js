@@ -5,5 +5,5 @@ import 'normalize.css'
 import './style/global.css'
 import router from './router/index.js'
 
-// createApp ( App ).use ( router ).mount ( '#app' )
-createApp ( App ).mount ( '#app' )
+createApp ( App ).use ( router ).mount ( '#app' )
+// createApp ( App ).mount ( '#app' )

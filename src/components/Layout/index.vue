@@ -10,9 +10,12 @@ defineOptions ( {
 <template>
   <el-row>
     <el-col :span="5">
+      <!--头像-->
       <Avatar width="200px" height="200px"></Avatar>
       <h3 class="title">LittleSnail的个人空间</h3>
-      <a href="#">
+
+      <!-- 菜单栏-->
+      <RouterLink :to="{name:'Home'}">
         <svg t="1698413221981" class="icon" viewBox="0 0 1101 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="12242" width="25" height="25">
           <path
@@ -26,8 +29,8 @@ defineOptions ( {
               fill="" p-id="12245"></path>
         </svg>
         <span>首页</span>
-      </a>
-      <a href="#">
+      </RouterLink>
+      <RouterLink :to="{name:'Blog'}">
         <svg t="1698413264523" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="15040" width="25" height="25">
           <path
@@ -38,8 +41,8 @@ defineOptions ( {
               p-id="15042"></path>
         </svg>
         <span>文章</span>
-      </a>
-      <a href="#">
+      </RouterLink>
+      <RouterLink :to="{name:'About'}">
         <svg t="1698461707436" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="4932" width="25" height="25">
           <path
@@ -47,8 +50,8 @@ defineOptions ( {
               fill="#333333" p-id="4933"></path>
         </svg>
         <span>关于我</span>
-      </a>
-      <a href="#">
+      </RouterLink>
+      <RouterLink :to="{name:'Project'}">
         <svg t="1698413317434" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
              p-id="18710" width="25" height="25">
           <path
@@ -56,12 +59,15 @@ defineOptions ( {
               fill="#333333" p-id="18711"></path>
         </svg>
         <span>项目&效果</span>
-      </a>
+      </RouterLink>
       <!-- 联系方式-->
       <Contact></Contact>
     </el-col>
     <el-col :span="19">
-      <div class="grid-content ep-bg-purple"/>
+      <!-- 路由视图-->
+      <Transition name="fade">
+        <RouterView></RouterView>
+      </Transition>
     </el-col>
   </el-row>
 </template>
@@ -104,8 +110,14 @@ defineOptions ( {
 
 }
 
-.grid-content {
-  min-height: 36px;
-  border: 1px solid black;
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
