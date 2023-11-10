@@ -40,6 +40,13 @@ export default defineConfig ( {
             // 关键代码
             '@' : path.resolve ( __dirname , './src' )
         }
+    },
+    server:{
+        proxy:{
+            '/api':{
+                target:'http://localhost:3001'
+            }
+        }
     }
 } )
 
