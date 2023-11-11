@@ -10,7 +10,7 @@ export default [
     } ,
     {
         name : 'Blog' ,
-        path : '/Blog' ,
+        path : '/blog' ,
         component : () => import('@/view/Blog/index.vue') ,
         meta : {
             title : "文章" ,
@@ -18,7 +18,7 @@ export default [
     } ,
     {
         name : 'About' ,
-        path : '/About' ,
+        path : '/about' ,
         component : () => import('@/view/About/index.vue') ,
         meta : {
             title : "关于我" ,
@@ -26,11 +26,18 @@ export default [
     } ,
     {
         name : 'Project' ,
-        path : '/Project' ,
+        path : '/project' ,
         component : () => import('@/view/Project/index.vue') ,
         meta : {
             title : "项目" ,
         }
     } ,
-
+    {
+        name : 'BlogDetails' ,
+        path : '/article/:id' ,
+        component : () => import('@/view/Blog/components/BlogDetails.vue') ,
+        meta : {
+            title : "博客详情" ,
+        }
+    } ,
 ]
