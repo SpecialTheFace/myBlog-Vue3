@@ -8,5 +8,33 @@ ul {
     list-style: none;
 }
 
+/*
+code {
+    color: #c1798b;
+    background-color: #f9f2f4;
+    padding: 2px 3px;
+    letter-spacing: -0.3px;
+    border-radius: 2px;
+}
 
+.toastui-editor-contents ul, .toastui-editor-contents menu, .toastui-editor-contents ol, .toastui-editor-contents dir {
+    display: block;
+    list-style-type: none;
+    padding-left: 24px;
+    margin: 6px 0 10px;
+    color: #222;
+}
 
+ blockquote {
+     line-height: 160%;
+
+    min-height: 20px;
+}
+
+ blockquote {
+    margin: 14px 0;
+    border-left: 4px solid #e5e5e5;
+    padding: 0 16px;
+    color: #999;
+}
+*/

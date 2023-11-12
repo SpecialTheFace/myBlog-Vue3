@@ -1,11 +1,20 @@
 import { ref } from "vue";
 import { defineStore } from 'pinia'
-import { getBlogs } from "@/api/blog.js";
+import { getBlog , getBlogs } from "@/api/blog.js";
 
 export const useBlogStore = defineStore ( 'blog' , () => {
     // state
     const blogNumber = ref ( 0 );
     const allBlogList = ref ( [] );
+
+    /*blogDetail*/
+    const blogTitle = ref ( '' );
+    const blogCreateDate = ref ( 0 );
+    const blogScanNumber = ref ( 0 );
+    const blogCommentNumber = ref ( 0 );
+    // 文章目录
+    const blogToc = ref ( [] );
+    const markdown = ref ( '' )
     // action
 
     // 获取目标分类所有文章
@@ -23,11 +32,30 @@ export const useBlogStore = defineStore ( 'blog' , () => {
         allBlogList.value = res.data.rows;
         blogNumber.value = res.data.rows.length
     }
+
+    // 根据 id 获取文章信息
+    const getBlogDetail = async ( id ) => {
+        const { data : res } = await getBlog ( id );
+        const response = res.data
+        markdown.value = response.htmlContent;
+        blogTitle.value = response.title;
+        blogCreateDate.value = +response.createDate;
+        blogScanNumber.value = +response.scanNumber;
+        blogCommentNumber.value = +response.commentNumber;
+        blogToc.value = response.toc;
+    }
     // 对外提供数据
     return {
         blogNumber ,
         allBlogList ,
+        blogTitle,
+        blogCreateDate,
+        blogScanNumber,
+        blogCommentNumber,
+        blogToc,
+        markdown,
         getCategoryOne ,
-        getAllBlogList
+        getAllBlogList ,
+        getBlogDetail
     }
 } )

@@ -35,7 +35,7 @@ export default [
     {
         name : 'BlogDetails' ,
         path : '/article/:id' ,
-        component : () => import('@/view/Blog/components/BlogDetails.vue') ,
+        component : () => import('@/view/Blog/components/BlogDetails/index.vue') ,
         meta : {
             title : "博客详情" ,
         }
