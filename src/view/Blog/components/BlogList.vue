@@ -1,15 +1,7 @@
 <template>
   <div class="blogList-container">
     <!-- 骨架屏-->
-    <div class="skeleton" v-if="isLoading">
-      <el-skeleton :rows="15" :loading="isLoading"/>
-      <br/>
-      <el-skeleton style="--el-skeleton-circle-size: 100px">
-        <template #template>
-          <el-skeleton-item variant="circle" :loading="isLoading"/>
-        </template>
-      </el-skeleton>
-    </div>
+    <Skeleton :isLoading="isLoading"></Skeleton>
     <!--main-->
     <RouterLink :to="{
         name:'BlogDetails',
@@ -47,6 +39,7 @@ import { onMounted , ref , watch } from 'vue'
 import { server_URL } from '@/utils/urlConfig.js'
 import formatDate from "@/utils/formatData.js";
 import { useBlogStore } from "@/stores/blogStore.js";
+import Skeleton from '@/components/Skeleton/index.vue'
 
 defineOptions ( {
   name : 'BlogList'
@@ -59,7 +52,7 @@ onMounted ( async () => {
   blogList.value = blogStore.allBlogList;
   if ( blogList.value.length>0 ) isLoading.value = false;
 } )
-watch ( () => blogStore.allBlogList[ "0" ]?.categoryId , (  ) => {
+watch ( () => blogStore.allBlogList[ "0" ]?.categoryId , () => {
   blogList.value = blogStore.allBlogList;
 } , {
   deep : true

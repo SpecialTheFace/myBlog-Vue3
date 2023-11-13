@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from 'pinia'
 import { getBlog , getBlogs } from "@/api/blog.js";
+import formatToc from '@/utils/formatToc.js'
 
 export const useBlogStore = defineStore ( 'blog' , () => {
     // state
@@ -19,9 +20,7 @@ export const useBlogStore = defineStore ( 'blog' , () => {
 
     // 获取目标分类所有文章
     const getCategoryOne = async ( page , limit , categoryId ) => {
-        // blogOneOfInfo.value = [];
         const { data : res } = await getBlogs ( page , limit , categoryId );
-        // blogOneOfInfo.value = res.data.rows;
         allBlogList.value = res.data.rows;
     }
 
@@ -42,18 +41,20 @@ export const useBlogStore = defineStore ( 'blog' , () => {
         blogCreateDate.value = +response.createDate;
         blogScanNumber.value = +response.scanNumber;
         blogCommentNumber.value = +response.commentNumber;
-        blogToc.value = response.toc;
+        blogToc.value = formatToc ( response.toc );
+        return Promise.resolve ( false );
     }
+
     // 对外提供数据
     return {
         blogNumber ,
         allBlogList ,
-        blogTitle,
-        blogCreateDate,
-        blogScanNumber,
-        blogCommentNumber,
-        blogToc,
-        markdown,
+        blogTitle ,
+        blogCreateDate ,
+        blogScanNumber ,
+        blogCommentNumber ,
+        blogToc ,
+        markdown ,
         getCategoryOne ,
         getAllBlogList ,
         getBlogDetail

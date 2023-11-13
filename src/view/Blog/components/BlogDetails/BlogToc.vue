@@ -5,76 +5,24 @@
 </template>
 
 <script setup>
+import { onUpdated , ref } from "vue";
+
 defineOptions ( {
   name : 'BlogToc'
 } )
+const props = defineProps ( {
+  Toc : Array
+} )
+const data = ref ( [] );
+onUpdated ( () => data.value = props.Toc )
 
-const handleNodeClick = ( data ) => {
-  console.log ( data )
-}
+const handleNodeClick = ( data ) => document.getElementById ( data.label ).scrollIntoView ( {
+  behavior : "smooth" ,
+  block : "start" ,
+  inline : "nearest"
+} );
 
-const data = [
-  {
-    label : 'Level one 1' ,
-    children : [
-      {
-        label : 'Level two 1-1' ,
-        children : [
-          {
-            label : 'Level three 1-1-1' ,
-          } ,
-        ] ,
-      } ,
-    ] ,
-  } ,
-  {
-    label : 'Level one 2' ,
-    children : [
-      {
-        label : 'Level two 2-1' ,
-        children : [
-          {
-            label : 'Level three 2-1-1' ,
-          } ,
-        ] ,
-      } ,
-      {
-        label : 'Level two 2-2' ,
-        children : [
-          {
-            label : 'Level three 2-2-1' ,
-          } ,
-        ] ,
-      } ,
-    ] ,
-  } ,
-  {
-    label : 'Level one 3' ,
-    children : [
-      {
-        label : 'Level two 3-1' ,
-        children : [
-          {
-            label : 'Level three 3-1-1' ,
-          } ,
-        ] ,
-      } ,
-      {
-        label : 'Level two 3-2' ,
-        children : [
-          {
-            label : 'Level three 3-2-1' ,
-          } ,
-        ] ,
-      } ,
-    ] ,
-  } ,
-]
 
-const defaultProps = {
-  children : 'children' ,
-  label : 'label' ,
-}
 </script>
 
 <style lang="less" scoped>
