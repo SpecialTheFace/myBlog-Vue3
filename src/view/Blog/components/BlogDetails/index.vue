@@ -5,8 +5,7 @@
         <!--文章内容-->
         <Detail :haveInfo="isLoading"></Detail>
         <!--文章评论-->
-        ================================ <br/>
-        文章评论
+        <MessageArea></MessageArea>
       </el-col>
       <el-col :span="6">
         <!--文章 TOC-->
@@ -23,6 +22,7 @@ import BlogToc from './BlogToc.vue'
 import { useBlogStore } from "@/stores/blogStore.js";
 import { useRoute } from "vue-router";
 import { onMounted , ref } from "vue";
+import MessageArea from '@/components/MessageArea/index.vue'
 
 defineOptions ( {
   name : 'BlogDetails'

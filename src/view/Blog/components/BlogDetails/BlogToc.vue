@@ -1,6 +1,6 @@
 <template>
   <div class="blogToc-container">
-    <el-tree :data="data" @node-click="handleNodeClick" :highlight-current="true"/>
+    <el-tree :data="data" @node-click="handleNodeClick" :highlight-current="true" :default-expand-all="true"/>
   </div>
 </template>
 

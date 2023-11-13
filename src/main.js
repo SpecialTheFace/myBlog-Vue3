@@ -5,6 +5,7 @@ import App from './App.vue'
 import 'normalize.css'
 import './style/global.css'
 import './style/makrdown.css'
+// import 'element-plus/dist/index.css'
 import router from './router/index.js'
 
 const pinia = createPinia ()
