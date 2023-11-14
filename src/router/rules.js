@@ -25,11 +25,11 @@ export default [
         }
     } ,
     {
-        name : 'Project' ,
-        path : '/project' ,
-        component : () => import('@/view/Project/index.vue') ,
+        name : 'LeaveWord' ,
+        path : '/leaveWord' ,
+        component : () => import('@/view/LeaveWord/index.vue') ,
         meta : {
-            title : "项目" ,
+            title : "留言" ,
         }
     } ,
     {
